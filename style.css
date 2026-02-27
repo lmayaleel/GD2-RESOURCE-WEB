@@ -1,0 +1,762 @@
+ /* 1. 기본 설정 */
+
+
+
+ /* 모든 링크의 기본 스타일 제거 */
+a {
+    text-decoration: none; /* 밑줄 삭제 */
+    color: inherit;        /* 부모(h1)의 글자색을 그대로 따라감 */
+    outline: none;         /* 클릭 시 생기는 테두리 방지 */
+}
+
+/* 방문한 뒤에도 색이 변하지 않게 고정 */
+a:visited {
+    color: inherit;
+}
+
+
+* {
+
+margin: 0;
+
+padding: 0;
+
+box-sizing: border-box;
+
+}
+
+
+
+body {
+
+background-color: #fff;
+
+overflow-x: hidden;
+
+}
+
+
+
+/* 2. 리스트에서 점 제거 및 폰트 정리 */
+
+.sidebar {
+
+position: fixed;
+
+left: 0;
+
+top: 0;
+
+width: 380px;
+
+height: 100vh;
+
+background-color: #fff;
+
+padding: 20px 30px;
+
+z-index: 1000;
+
+display: flex;
+
+flex-direction: column;
+
+justify-content: space-between;
+
+}
+
+
+
+/* 제목 스타일 */
+
+.header-area .title {
+
+font-family: Georgia, 'Times New Roman', Times, serif;
+
+letter-spacing: 0.03em; /* 자간을 살짝 벌려주면 훨씬 우아해 */
+
+font-size: 1.6rem;
+
+line-height: 1.1;
+
+font-weight: normal;
+
+margin-top: 2px;
+
+margin-left: -15px;
+
+}
+
+
+
+/* 리스트에서 점(Bullet) 없애기 */
+
+.movie-list {
+
+list-style: none; /* 점 제거 핵심 코드! */
+
+padding: 0;
+
+}
+
+
+
+.movie-list li {
+
+font-family: 'Times New Roman', Times, serif;
+
+font-size: 0.9rem;
+
+line-height: 0.8;
+
+color: #000;
+
+margin-bottom: 3px;
+
+margin-left: -15px;
+
+}
+
+
+
+/* 3. 오른쪽 콘텐츠: 이미지 확대 및 최적화 */
+
+.content {
+
+margin-left: 250px;
+
+/* [수정] 화면 전체를 채우지 말고, 내용물(이미지) 크기에 딱 맞춥니다 */
+
+width: fit-content;
+
+/* 만약 이미지 너비가 너무 크면 화면 밖으로 나가지 않게 최대치만 설정 */
+
+max-width: calc(100% - 250px);
+
+height: auto;
+
+position: relative;
+
+}
+
+
+
+.image-wrapper {
+
+width: 105%;
+
+/* 이미지를 더 크게 보고 싶다면 이 영역의 여백을 조절해 */
+
+}
+
+
+
+.bg-main {
+
+width: 100%; /* 콘텐츠 영역 너비에 꽉 채우기 */
+
+height: auto; /* 세로 길이는 14,999px 비율 유지 */
+
+display: block;
+
+
+/* [확대 팁] 이미지가 시안처럼 꽉 차게 보이도록 함 */
+
+object-fit: contain;
+
+
+/* 고해상도 이미지의 선명도 유지 */
+
+image-rendering: -webkit-optimize-contrast;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 조각들의 기준점이 되는 부모 박스 */
+
+.image-wrapper {
+
+position: relative; /* 이게 있어야 조각들이 화면 밖으로 안 도망가! */
+
+}
+
+
+
+/* 모든 조각 이미지 공통 설정 */
+
+.fragment {
+
+position: absolute; /* 배경은 무시하고 내 마음대로 위치 잡기 */
+
+z-index: 10; /* 배경보다 위로 올리기 */
+
+top: 0;
+
+left: 0;
+
+}
+
+
+
+/* 개별 조각 위치 잡기 (피그마 보면서 하나씩 조절해 봐!) */
+
+.frag-1 {
+
+width: 290px; /* 조각 크기 */
+
+top: 58px; /* 위에서 100px 내려오기 */
+
+left: 447px; /* 왼쪽에서 150px 옆으로 */
+
+height: 290PX;
+
+}
+
+.frag-2 {
+
+top: 693px; /* 위에서 100px 내려오기 */
+
+left: 129px; /* 왼쪽에서 150px 옆으로 */
+
+width: 320px; /* 조각 크기 */
+
+}
+
+.frag-3 {
+
+top: 873px; /* VisBug가 알려준 분홍색 위쪽 수치 */
+
+left: 183px; /* VisBug가 알려준 분홍색 왼쪽 수치 */
+
+width: 320px; /* 이미지 가로 크기 */
+
+height: 175px;
+
+}
+
+.frag-4 {
+
+top: 1130px; /* VisBug가 알려준 분홍색 위쪽 수치 */
+
+left: 293px; /* VisBug가 알려준 분홍색 왼쪽 수치 */
+
+width: 320px; /* 이미지 가로 크기 */
+
+height: 190px;
+
+}
+
+.frag-5 {
+
+top: 1400px; /* VisBug가 알려준 분홍색 위쪽 수치 */
+
+left: 709px; /* VisBug가 알려준 분홍색 왼쪽 수치 */
+
+width: 300px; /* 이미지 가로 크기 */
+
+}
+
+.frag-collector {
+
+top: 517px; /* VisBug가 알려준 분홍색 위쪽 수치 */
+
+left: 712px; /* VisBug가 알려준 분홍색 왼쪽 수치 */
+
+width: 280px; /* 이미지 가로 크기 */
+
+height: 170PX;
+
+}
+
+.frag-silence {
+
+top: 392px; /* VisBug가 알려준 분홍색 위쪽 수치 */
+
+left: 739px; /* VisBug가 알려준 분홍색 왼쪽 수치 */
+
+width: 280px; /* 이미지 가로 크기 */
+
+transform: rotate(-15deg); /* [회전 코드] 15도만큼 시계방향으로 회전 */
+
+filter: contrast(1.2); /* 흰색 테두리를 더 밝게 밀어냄 */
+
+mix-blend-mode: multiply;
+
+
+}
+
+.frag-house {
+
+top: 1432px; /* VisBug가 알려준 분홍색 위쪽 수치 */
+
+left: 128px; /* VisBug가 알려준 분홍색 왼쪽 수치 */
+
+width: 220px; /* 이미지 가로 크기 */
+
+}
+
+.frag-daises {
+
+top: 1648px; /* VisBug가 알려준 분홍색 위쪽 수치 */
+
+left: 129px; /* VisBug가 알려준 분홍색 왼쪽 수치 */
+
+width: 300px; /* 이미지 가로 크기 */
+
+}
+
+.frag-metempsychosis {
+
+top: 1902px; /* VisBug가 알려준 분홍색 위쪽 수치 */
+
+left: 871px; /* VisBug가 알려준 분홍색 왼쪽 수치 */
+
+width: 170px; /* 이미지 가로 크기 */
+
+}
+
+.frag-japonais {
+
+top: 2119px; /* VisBug가 알려준 분홍색 위쪽 수치 */
+
+left: 746px; /* VisBug가 알려준 분홍색 왼쪽 수치 */
+
+width: 195px; /* 이미지 가로 크기 */
+
+height: 290px;
+
+}
+
+.frag-women {
+
+top: 2295px; /* VisBug가 알려준 분홍색 위쪽 수치 */
+
+left: 275px; /* VisBug가 알려준 분홍색 왼쪽 수치 */
+
+width: 235px; /* 이미지 가로 크기 */
+
+height: 380px;
+
+}
+
+.frag-leprintemps {
+
+top: 2909px; /* VisBug가 알려준 분홍색 위쪽 수치 */
+
+left: 602px; /* VisBug가 알려준 분홍색 왼쪽 수치 */
+
+width: 450px; /* 이미지 가로 크기 */
+
+height: 270px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- 1. 영화 리스트 공통 아이템 (정렬 및 하이라이트) --- */
+
+.nav-item {
+
+cursor: pointer;
+
+transition: all 0.2s ease;
+
+
+/* 숫자 칸과 제목 칸을 칼정렬하는 그리드 */
+
+display: grid;
+
+grid-template-columns: 30px 1fr; /* 숫자칸을 30px로 타이트하게 조절 */
+
+align-items: center;
+
+
+/* 박스 시작점: 왼쪽 패딩 0 필수, margin으로 벽과의 거리 조절 */
+
+padding: 2px 10px 2px 0px;
+
+margin-left: 15px;
+
+margin-bottom: 2px; /* 아이템 간의 최소 간격 */
+
+
+width: fit-content;
+
+white-space: nowrap;
+
+font-family: 'Times New Roman', Times, serif;
+
+font-size: 0.95rem;
+
+color: #000;
+
+}
+
+
+
+.movie-list li {
+
+display: grid;
+
+/* 1. 로마 숫자 칸(60px) | 2. 영화 제목(1fr) | 3. 대괄호(20px) */
+
+grid-template-columns: 30px 1fr 20px;
+
+align-items: center;
+
+gap: 8px;
+
+margin-bottom: 6px;
+
+}
+
+
+
+/* 로마 숫자 영역만 가운데 정렬! */
+
+.roman {
+
+display: block;
+
+text-align: center; /* [핵심] 60px 공간 안에서 정중앙에 배치 */
+
+font-family: 'Times New Roman', serif;
+
+/* 만약 글자 너비를 일정하게 하고 싶다면 아래 속성 추가 */
+
+font-variant-numeric: tabular-nums;
+
+}
+
+
+
+/* 마우스 호버 효과 (중복 제거 완료) */
+
+.nav-item.highlight {
+
+background-color: #000;
+
+color: #fff !important;
+
+}
+
+
+
+/* --- 2. 이미지 애니메이션 및 색 반전 --- */
+
+.fragment {
+
+position: absolute;
+
+transition: filter 0.4s ease;
+
+}
+
+
+
+.fragment.active {
+
+filter: invert(100%);
+
+z-index: 100;
+
+}
+
+
+
+/* Remove hover effect for frag-silence */
+
+.fragment.frag-silence.active {
+
+filter: none;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- 3. 영화 카테고리 그룹 (대괄호 및 간격) --- */
+
+.movie-group {
+
+position: relative;
+
+/* 그룹 사이의 '엔터' 공간 제거 */
+
+margin-bottom: 0px;
+
+
+/* 모든 그룹의 대괄호 위치를 일렬로 맞춤 */
+
+width: 220px;
+
+display: flex;
+
+flex-direction: column;
+
+align-items: flex-start;
+
+}
+
+
+
+/* 대괄호(가이드라인) 디자인 */
+
+.movie-group::after {
+
+content: "";
+
+position: absolute;
+
+right: 0; /* 215px 지점에 고정 */
+
+top: 4px;
+
+bottom: 4px;
+
+width: 6px;
+
+
+/* 테두리 두께 및 색상 */
+
+border-right: 1.2px solid #000;
+
+border-top: 1.2px solid #000;
+
+border-bottom: 1.2px solid #000;
+
+opacity: 1.0;
+
+
+}
+
+/* [추가] ᶈ, ᶆ, ᶋ 심볼 스타일 */
+
+.group-symbol {
+
+position: absolute;
+
+left: 230px; /* 대괄호 바로 오른쪽 끝에 배치 */
+
+top: 50%; /* 세로 정중앙 */
+
+transform: translateY(-50%); /* 정확한 중앙 정렬 */
+
+font-family: 'Times New Roman', serif;
+
+font-size: 0.9rem;
+
+color: #000;
+
+cursor: pointer; /* 손가락 모양 추가 */
+
+transition: opacity 0.2s;
+
+pointer-events: auto !important; /* 혹시나 클릭 안 되는 것 방지 */
+
+}
+
+.group-symbol:hover {
+
+opacity: 0.5; /* 마우스 올리면 살짝 흐려지는 효과 */
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.title {
+
+/* 기존 폰트 설정 유지 */
+
+font-family: 'Georgia', 'Times New Roman', Times, serif;
+
+line-height: 1.2;
+
+}
+
+
+
+.sub-title {
+
+display: inline-block; /* 효과가 안정적으로 먹히게 설정 */
+
+transition: all 0.1s ease; /* 부드럽게 변하는 효과 */
+
+cursor: pointer; /* 마우스 올리면 클릭 가능하다는 표시 */
+
+}
+
+
+
+/* [핵심] 부제목에 마우스를 올렸을 때만 이탈릭으로! */
+
+.sub-title:hover {
+
+font-style: italic;
+
+/* 아르누보 느낌을 더 내고 싶다면 아래 속성도 살짝 추가해봐 */
+
+/* letter-spacing: 1px; */
+
+/* opacity: 0.7; */
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 3. 전체 위치 더 내리고 싶으면 padding-top 조절 */
+.about-main {
+    margin-left: 200px;
+    width: calc(100% - 380px);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 250px; /* 여기서 숫자를 더 키우면 더 내려가 */
+    background-color: #fff;
+}
+
+/* 타임라인 컨테이너 */
+.timeline-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* 키워드 노드 */
+.keyword-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* [핵심] 제목과 화살표를 감싸는 영역 */
+.keyword-header {
+    position: relative; /* 화살표의 기준점 */
+    width: 100%;
+    max-width: 500px;  /* 본문 너비와 일치 */
+    display: flex;
+    justify-content: center; /* 제목은 무조건 정중앙 */
+    align-items: center;     /* 제목과 화살표 높이 일치 */
+    padding: 15px 0;
+}
+
+.node-text {
+    font-family: 'Times New Roman', serif;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+/* 1. 화살표: 위치를 '절대적'으로 고정해줘야 해 */
+.arrow-btn {
+    position: absolute; /* [필수] 이게 있어야 right: 0이 먹혀! */
+    right: 0;           /* 500px 박스의 맨 오른쪽 끝 */
+    top: 50%;           /* 부모 박스의 세로 중앙 */
+    transform: translateY(-50%); /* 정확하게 글자 높이랑 나란히 맞춤 */
+    font-size: 1.3rem;
+    line-height: 1;
+    display: none;      /* 평소엔 숨겨두기 */
+}
+
+/* 2. 클릭했을 때(active)만 화살표랑 이탤릭체 나오게 */
+.keyword-node.active .node-text {
+    font-style: italic; /* 오빠가 원한 이탤릭체 복구! */
+}
+
+.keyword-node.active .arrow-btn {
+    display: block;     /* 클릭하면 오른쪽 끝에 짠! */
+}
+
+/* 본문 영역 */
+.detail-content {
+    display: none; 
+    width: 100%;
+    max-width: 500px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.keyword-node.active .detail-content {
+    display: block;
+}
+
+.description {
+    font-family: 'Times New Roman', serif;
+    font-size: 18px; 
+    line-height: 1.6;
+    text-align: justify;
+    margin: 0 20px;
+    
+}
+
+/* [절대 안 사라지는] 세로선 패턴 */
+.node-line {
+    width: 1px;
+    height: 60px;
+    background-color: #000;
+    margin: 5px 0;
+    display: block !important; /* 강제로 보이게 함 */
+}
