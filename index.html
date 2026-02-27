@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Butterfly Archive</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="header-area">
+                <h1 class="title"> The Butterfly Archive(s)<br> <span class="sub-title">— Cinematic Fragments</span>
+</h1>
+            </div>
+            
+            <nav class="list-area">
+                 <ul class="movie-list">
+                    <div class="movie-group" id="group-1">
+                        <li class="nav-item" data-target="frag-collector"><span class="num">Ⅰ.</span> The Collector</li>
+                        <li class="nav-item" data-target="frag-2"><span class="num">Ⅱ.</span> Helter Skelter</li>
+                        <li class="nav-item" data-target="frag-3"><span class="num">Ⅲ.</span> Branded to Kill</li>
+                        <li class="nav-item" data-target="frag-4"><span class="num">Ⅳ.</span> The Duke of Burgundy</li>
+                        <span class="group-symbol" onclick="scrollToImage('.frag-collector')">ᶈ</span></div>
+
+        <div class="movie-group" id="group-2">
+            <li class="nav-item" data-target="frag-5"><span class="num">Ⅴ.</span> Swallowtail Butterfly</li>
+            <li class="nav-item" data-target="frag-house"><span class="num">Ⅵ.</span> Paprika</li>
+            <li class="nav-item" data-target="frag-daises"><span class="num">Ⅶ.</span> Daises</li>
+            <li class="nav-item" data-target="frag-"><span class="num">Ⅷ.</span> THe Silence of the Lambs</li>
+            <li class="nav-item" data-target="frag-metempsychosis"><span class="num">Ⅸ.</span> Metempsychosis</li>
+            <li class="nav-item" data-target="frag-japonais"><span class="num">Ⅹ.</span> Les Papillons japonais</li>
+            <li class="nav-item" data-target="frag-women"><span class="num">Ⅺ.</span> You Never Know Women</li>
+            <span class="group-symbol" onclick="scrollToImage('.frag-house')">ᶆ</span>
+        </div>
+
+        <div class="movie-group" id="group-3">
+            <li class="nav-item" data-target="frag-"><span class="num">XII.</span> Papillon</li>
+            <li class="nav-item" data-target="frag-leprintemps"><span class="num">XIII.</span> Le printemps</li>
+            <li class="nav-item" data-target="frag-"><span class="num">XIV.</span> La lengua de las mariposas</li>
+            <li class="nav-item" data-target="frag-"><span class="num">XV.</span> In the Realms of the Unreal</li>
+            <span class="group-symbol" onclick="scrollToImage('.frag-leprintemps')">ᶋ</span>
+        </div>
+    </ul>
+</nav>
+        </aside>
+
+        <main class="content">
+            <div class="image-wrapper">
+                <img src="source/objects/CCC.png" class="bg-main" alt="Main Artwork">
+                <a href="about.html">
+                     <img src="source/objects/IMG_3195.png" class="fragment frag-1" alt="Fragment 1">
+                </a>
+
+                <img src="source/films/helter.png" class="fragment frag-2" alt="Fragment 2">
+                <img src="source/films/branded-to-kill_2.png" class="fragment frag-3" alt="Frasgment 3">
+                <img src="source/films/bur.png" class="fragment frag-4" alt="fragment 4">
+                <img src="source/films/d.png" class="fragment frag-5" alt="fragment 5">
+                <img src="source/films/house.png" class="fragment frag-house" alt="fragment house">
+                 <img src="source/films/collector.png" class="fragment frag-collector" alt="fragment collector">
+                 <img src="source/films/silence.png" class="fragment frag-silence" alt="fragment silence">
+                 <img src="source/films/daises.png" class="fragment frag-daises" alt="fragment daises">
+                 <img src="source/films/ Metempsychosis.png" class="fragment frag-metempsychosis" alt="fragment metempsychosis">
+                 <img src="source/films/japonais.png" class="fragment frag-japonais" alt="fragment japonais">
+                 <img src="source/films/women.png" class="fragment frag-women" alt="fragment women">
+                 <img src="source/films/Le printemps.png" class="fragment frag-leprintemps" alt="fragment leprintemps">
+                
+
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
