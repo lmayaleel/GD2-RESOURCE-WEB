@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Butterfly Archive</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <class="container">
+        <aside class="sidebar">
+            <div class="header-area">
+                <a href="index.html">
+                    <h1 class="title"> The Butterfly Archive(s)<br> <span class="sub-title">— Cinematic Fragments</span>
+                    </a>
+</h1>
+            </div>
+            
+            <nav class="list-area">
+                 <ul class="movie-list">
+                    <div class="movie-group" id="group-1">
+                        <li class="nav-item" data-target="frag-collector"><span class="num">Ⅰ.</span> The Collector</li>
+                        <li class="nav-item" data-target="frag-2"><span class="num">Ⅱ.</span> Helter Skelter</li>
+                        <li class="nav-item" data-target="frag-3"><span class="num">Ⅲ.</span> Branded to Kill</li>
+                        <li class="nav-item" data-target="frag-4"><span class="num">Ⅳ.</span> The Duke of Burgundy</li>
+                        <span class="group-symbol" onclick="scrollToImage('.frag-collector')">ᶈ</span></div>
+
+        <div class="movie-group" id="group-2">
+            <li class="nav-item" data-target="frag-5"><span class="num">Ⅴ.</span> Swallowtail Butterfly</li>
+            <li class="nav-item" data-target="frag-house"><span class="num">Ⅵ.</span> Paprika</li>
+            <li class="nav-item" data-target="frag-daises"><span class="num">Ⅶ.</span> Daises</li>
+            <li class="nav-item" data-target="frag-"><span class="num">Ⅷ.</span> THe Silence of the Lambs</li>
+            <li class="nav-item" data-target="frag-metempsychosis"><span class="num">Ⅸ.</span> Metempsychosis</li>
+            <li class="nav-item" data-target="frag-japonais"><span class="num">Ⅹ.</span> Les Papillons japonais</li>
+            <li class="nav-item" data-target="frag-women"><span class="num">Ⅺ.</span> You Never Know Women</li>
+            <span class="group-symbol" onclick="scrollToImage('.frag-house')">ᶆ</span>
+        </div>
+
+        <div class="movie-group" id="group-3">
+            <li class="nav-item" data-target="frag-"><span class="num">XII.</span> Papillon</li>
+            <li class="nav-item" data-target="frag-leprintemps"><span class="num">XIII.</span> Le printemps</li>
+            <li class="nav-item" data-target="frag-"><span class="num">XIV.</span> La lengua de las mariposas</li>
+            <li class="nav-item" data-target="frag-"><span class="num">XV.</span> In the Realms of the Unreal</li>
+            <span class="group-symbol" onclick="scrollToImage('.frag-leprintemps')">ᶋ</span>
+        </div>
+    </ul>
+</nav>
+        </aside>
+
+
+
+        
+        <main class="about-main">
+            <div class="timeline-container">
+            <div class="keyword-node" id="node-1">
+            <div class="keyword-header">
+                <span class="node-text" onclick="toggleDetail(1)">Possessiveness</span>
+                <span class="arrow-btn">⟼</span> 
+            </div>
+            <div class="detail-content">
+                <p class="description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+        </div>
+
+        <div class="node-line"></div>
+
+            <div class="keyword-node" id="node-2">
+            <div class="keyword-header">
+                <span class="node-text" onclick="toggleDetail(2)">Metamorphosis</span>
+                <span class="arrow-btn" onclick="showNextFrame(2)">⟼</span>
+             </div>
+            <div class="detail-content">
+                <p class="description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+        </div>
+
+            <div class="node-line"></div>
+
+            <div class="keyword-node" id="node-3">
+                <div class="keyword-header">
+                    <span class="node-text" onclick="toggleDetail(3)">Liberation</span>
+                    <span class="arrow-btn" onclick="showNextFrame(3)">⟼</span>
+             </div>
+             <div class="detail-content">
+                <p class="description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+        </div>
+            <div class="node-line"></div>
+
+            <div class="keyword-node" id="node-4">
+                <div class="keyword-header">
+                    <span class="node-text" onclick="toggleDetail(4)">Epilogue</span>
+                    <span class="arrow-btn" onclick="showNextFrame(4)">⟼</span>
+            </div>
+            <div class="detail-content">
+                <p class="description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+
+        </div>
+    </main>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
