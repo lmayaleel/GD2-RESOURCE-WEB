@@ -117,3 +117,116 @@ function showNextFrame(nodeId) {
         frames[currentFrame].classList.add('main-frame');
     }
 }
+function toggleDetail(character) {
+    // 1. 클릭한 버튼의 부모인 keyword-node를 찾음
+    const node = document.getElementById('node-' + character);
+    
+    if (!node) return;
+
+    // 2. 현재 열려있는지 확인
+    const isActive = node.classList.contains('active');
+
+    // 3. (선택) 다른 것들은 닫고 싶다면 아래 3줄 주석 해제!
+    /*
+    document.querySelectorAll('.keyword-node').forEach(item => {
+        item.classList.remove('active');
+    });
+    */
+
+    // 4. 클릭한 대상만 열거나 닫기
+    if (isActive) {
+        node.classList.remove('active');
+    } else {
+        node.classList.add('active');
+    }
+}
+
+function toggleRemoteDesc(id) {
+    const desc = document.getElementById(id);
+    if (desc) {
+        desc.classList.toggle('active'); // 클래스를 넣었다 뺐다 해주는 마법
+    }
+}
+
+
+function toggleDetail(nodeNum) {
+    const node = document.getElementById(`node-${nodeNum}`);
+    node.classList.toggle('active');
+}
+
+function nextSentence(nodeNum, event) {
+    event.stopPropagation(); // 제목 클릭 이벤트 방지
+    
+    const node = document.getElementById(`node-${nodeNum}`);
+    const descriptions = node.querySelectorAll('.description');
+    let activeIndex = -1;
+
+    // 현재 보이고 있는 문장의 인덱스 찾기
+    descriptions.forEach((desc, index) => {
+        if (desc.classList.contains('active')) {
+            activeIndex = index;
+        }
+    });
+
+    // 현재 문장 숨기기
+    descriptions[activeIndex].classList.remove('active');
+
+    // 다음 문장 보여주기 (마지막 문장이면 다시 첫 번째로)
+    const nextIndex = (activeIndex + 1) % descriptions.length;
+    descriptions[nextIndex].classList.add('active');
+}
+
+function nextSentence(nodeNum, event) {
+    event.stopPropagation();
+    const node = document.getElementById(`node-${nodeNum}`);
+    const descriptions = node.querySelectorAll('.description');
+    let activeIndex = Array.from(descriptions).findIndex(desc => desc.classList.contains('active'));
+
+    // 마지막 문장이 아니라면 다음으로 이동
+    if (activeIndex < descriptions.length - 1) {
+        descriptions[activeIndex].classList.remove('active');
+        descriptions[activeIndex + 1].classList.add('active');
+        
+        // 상태 업데이트
+        updateArrowState(node, activeIndex + 1, descriptions.length);
+    }
+}
+
+function prevSentence(nodeNum, event) {
+    event.stopPropagation();
+    const node = document.getElementById(`node-${nodeNum}`);
+    const descriptions = node.querySelectorAll('.description');
+    let activeIndex = Array.from(descriptions).findIndex(desc => desc.classList.contains('active'));
+
+    // 첫 번째 문장이 아니라면 이전으로 이동
+    if (activeIndex > 0) {
+        descriptions[activeIndex].classList.remove('active');
+        descriptions[activeIndex - 1].classList.add('active');
+        
+        // 상태 업데이트
+        updateArrowState(node, activeIndex - 1, descriptions.length);
+    }
+}
+
+// 화살표 보이기/숨기기를 관리하는 핵심 함수
+function updateArrowState(node, currentIndex, totalCount) {
+    const nextBtn = node.querySelector('.arrow-btn');
+    const prevBtn = node.querySelector('.arrow-btn-prev');
+
+    // 1. 왼쪽 화살표: 첫 번째 문장이 아닐 때만 보임
+    prevBtn.style.display = (currentIndex > 0) ? 'block' : 'none';
+
+    // 2. 오른쪽 화살표: 마지막 문장이 아닐 때만 보임
+    nextBtn.style.display = (currentIndex < totalCount - 1) ? 'block' : 'none';
+}
+
+// toggleDetail도 수정 (열릴 때 초기 상태 세팅)
+function toggleDetail(nodeNum) {
+    const node = document.getElementById(`node-${nodeNum}`);
+    node.classList.toggle('active');
+    
+    if(node.classList.contains('active')) {
+        const descriptions = node.querySelectorAll('.description');
+        updateArrowState(node, 0, descriptions.length);
+    }
+}
