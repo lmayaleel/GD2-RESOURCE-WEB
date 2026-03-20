@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Butterfly Archive</title>
     <link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Lobster&family=Marvel:ital,wght@0,400;0,700;1,400;1,700&family=Playball&family=Playwrite+NZ+Basic+Guides&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap&text=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩⅪⅫ∫ᶈᶆᶋ⟼" rel="stylesheet">
 </head>
 
 <body>
@@ -30,7 +34,7 @@
             <li class="nav-item" data-target="frag-5"><span class="num">Ⅴ.</span> Swallowtail Butterfly</li>
             <li class="nav-item" data-target="frag-house"><span class="num">Ⅵ.</span> Paprika</li>
             <li class="nav-item" data-target="frag-daises"><span class="num">Ⅶ.</span> Daises</li>
-            <li class="nav-item" data-target="frag-"><span class="num">Ⅷ.</span> THe Silence of the Lambs</li>
+            <li class="nav-item" data-target="frag-lambs"><span class="num">Ⅷ.</span> THe Silence of the Lambs</li>
             <li class="nav-item" data-target="frag-metempsychosis"><span class="num">Ⅸ.</span> Metempsychosis</li>
             <li class="nav-item" data-target="frag-japonais"><span class="num">Ⅹ.</span> Les Papillons japonais</li>
             <li class="nav-item" data-target="frag-women"><span class="num">Ⅺ.</span> You Never Know Women</li>
@@ -38,10 +42,10 @@
         </div>
 
         <div class="movie-group" id="group-3">
-            <li class="nav-item" data-target="frag-"><span class="num">XII.</span> Papillon</li>
+            <li class="nav-item" data-target="frag-papillon"><span class="num">XII.</span> Papillon</li>
             <li class="nav-item" data-target="frag-leprintemps"><span class="num">XIII.</span> Le printemps</li>
-            <li class="nav-item" data-target="frag-"><span class="num">XIV.</span> La lengua de las mariposas</li>
-            <li class="nav-item" data-target="frag-"><span class="num">XV.</span> In the Realms of the Unreal</li>
+            <li class="nav-item" data-target="frag-la"><span class="num">XIV.</span> La lengua de las mariposas</li>
+            <li class="nav-item" data-target="frag-In"><span class="num">XV.</span> In the Realms of the Unreal</li>
             <span class="group-symbol" onclick="scrollToImage('.frag-leprintemps')">ᶋ</span>
         </div>
     </ul>
@@ -56,14 +60,20 @@
             <div class="keyword-node" id="node-1">
             <div class="keyword-header">
                 <span class="node-text" onclick="toggleDetail(1)">Possessiveness</span>
-                <span class="arrow-btn">⟼</span> 
+                <span class="arrow-btn" onclick="nextSentence(1, event)">⟼</span>
+                <span class="arrow-btn-prev" onclick="prevSentence(1, event)">⟻</span>
             </div>
             <div class="detail-content">
+                <p class="description active">
+                    Possessiveness refers to a psychological tendency to feel a strong attachment to a specific object—be it a person, 
+                    an object, or a status—and to want to keep it under one’s control.It stems from a desire to perceive the subject not 
+                    as an independent entity, but as an extension or a piece of property belonging to oneself.
+                </p>
                 <p class="description">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    The desire to possess something is akin to a declaration that one intends to freeze its ‘time’. When I attempt to confine 
+                    myself or another person within a specific framework, that subject ceases to be a living being and becomes a stuffed specimen. 
+                    To me, the desire to possess is a static comfort forced into existence by an inability to endure the uncertainty of an ever-changing life.
+                     Yet nothing that stands still can harbour a soul.
                 </p>
             </div>
         </div>
@@ -73,14 +83,24 @@
             <div class="keyword-node" id="node-2">
             <div class="keyword-header">
                 <span class="node-text" onclick="toggleDetail(2)">Metamorphosis</span>
-                <span class="arrow-btn" onclick="showNextFrame(2)">⟼</span>
+                <span class="arrow-btn" onclick="nextSentence(2,event)">⟼</span>
+                <span class="arrow-btn-prev" onclick="prevSentence(2, event)">⟻</span>
              </div>
             <div class="detail-content">
-                <p class="description">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <p class="description active">
+                    Metamorphosis is not merely a change in outward appearance; it is a painful process of shedding, where the existing self is 
+                    dissolved and reconstructed into a new form. It is a fierce struggle ithat rejects stability, dissolves the self into a fluid state, 
+                    and casts it into uncertainty.
+                 <p class="description">
+                    To reach the finality of completion, one must inevitably pass through a period of transitional instability. 
+                    The helplessness of the moment one breaks through the shell and the time spent drifting without belonging anywhere are the 
+                    essential prices paid for transformation. It is only through this suffering that an entity gains the momentum to advance to the
+                     next stage.
+                 <p class="description">
+                    For me, metamorphosis is the courage to willingly betray the self of yesterday. When we endure the raw terror of facing an unfamiliar 
+                    version of ourselves after leaving behind everything that was once comfortable, we succeed not just in growth, but in a true 'transformation.'
+                     Change does not reside in the brilliant result, but in every stumble as one crawls toward that outcome.
+                    
                 </p>
             </div>
         </div>
@@ -90,14 +110,18 @@
             <div class="keyword-node" id="node-3">
                 <div class="keyword-header">
                     <span class="node-text" onclick="toggleDetail(3)">Liberation</span>
-                    <span class="arrow-btn" onclick="showNextFrame(3)">⟼</span>
+                    <span class="arrow-btn" onclick="nextSentence(3, event)">⟼</span>
+                    <span class="arrow-btn-prev" onclick="prevSentence(3, event)">⟻</span>
              </div>
              <div class="detail-content">
-                <p class="description">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <p class="description active">
+                    Liberation signifies a state of escape from external controls or the internal prisons of one's own making. It is not a mere change of location, 
+                    but a declaration of returning to one's whole, individual self, separated from all the relationships and symbols that once defined and constrained them.
+                    <p class="description">
+                        For me, liberation is not about gaining something, but rather the process of reducing the ‘weight’ that bound me to zero. That transparent void which appears 
+                        when one has emptied oneself of both the compulsion to become something and the sense of security that comes from belonging to someone else is the very essence of freedom. Liberation is 
+                        completed not so much by the act of taking flight itself, but by the resolute realisation that one can never return to that narrow cocoon.
+
                 </p>
             </div>
         </div>
@@ -106,15 +130,16 @@
             <div class="keyword-node" id="node-4">
                 <div class="keyword-header">
                     <span class="node-text" onclick="toggleDetail(4)">Epilogue</span>
-                    <span class="arrow-btn" onclick="showNextFrame(4)">⟼</span>
+                    <span class="arrow-btn" onclick="nextSentence(4, event)">⟼</span>
+                    <span class="arrow-btn-prev" onclick="prevSentence(4, event)">⟻</span>
             </div>
             <div class="detail-content">
-                <p class="description">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <p class="description active">
+                   These records are the scattered fragments of the many 'selves' I have encountered. 
+                   I navigate the depths of my inner self and I haven't achived  a fixed definition; nor I wouldn't. 
+                   It destined to be endlessly dismantled and rebuilt as I evolve.
                 </p>
+                 <p class="description">
             </div>
 
         </div>
