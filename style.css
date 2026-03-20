@@ -1,7 +1,35 @@
  /* 1. 기본 설정 */
 
+/* 다른 영화들도 사이드바에서 검게 나오도록 추가 */
+#page-collector [data-target="frag-collector"],
+#page-paprika [data-target="frag-house"],
+#page-daises [data-target="frag-daises"],
+#page-helter [data-target="frag-2"]
+#page-branded [data-target="frag-3"]
+#page-duke [data-target="frag-4"]
+#page-swallowr [data-target="frag-5"]
+#page-house [data-target="frag-house"]
+#page-daises [data-target="frag-daises"]
+#page-japonais [data-target="frag-japonais"]
+#page-women [data-target="frag-women"]
+#page-leprintemps [data-target="frag-leprintemps"]
+#page-papillon [data-target="frag-papillon"]
+#page-lambs [data-target="frag-lambs"]
+#page-In [data-target="frag-In"]
+#page-la [data-target="frag-la"] {
+    background-color: #000 !important;
+    color: #fff !important;
+}
+/* 사이트의 모든 텍스트, 숫자, 기호에 EB Garamond 강제 적용 */
+* {
+    font-family: 'EB Garamond', serif !important;
+}
 
-
+/* 특히 로마자와 기호가 있는 부분들을 콕 집어서 한 번 더! */
+.num,  .analysis-text p {
+    font-family: 'EB Garamond', serif !important;
+    font-variant-numeric: lining-nums; /* 숫자 모양을 예쁘게 정렬 */
+}
  /* 모든 링크의 기본 스타일 제거 */
 a {
     text-decoration: none; /* 밑줄 삭제 */
@@ -73,9 +101,9 @@ justify-content: space-between;
 
 font-family: Georgia, 'Times New Roman', Times, serif;
 
-letter-spacing: 0.03em; /* 자간을 살짝 벌려주면 훨씬 우아해 */
+letter-spacing: 0.04em; /* 자간을 살짝 벌려주면 훨씬 우아해 */
 
-font-size: 1.6rem;
+font-size: 30px;
 
 line-height: 1.1;
 
@@ -105,7 +133,7 @@ padding: 0;
 
 font-family: 'Times New Roman', Times, serif;
 
-font-size: 0.9rem;
+font-size: 15px;
 
 line-height: 0.8;
 
@@ -364,6 +392,33 @@ height: 270px;
 
 }
 
+.frag-papillon {
+    top: 2657px; 
+    left: 800px;
+    height: 252px;
+    width: 380px;
+}
+
+.frag-lambs {
+    top: 1882px; 
+    left: 155px;
+    height: 170px;
+    width: 310px;
+}
+
+.frag-In  {
+    top: 3710px; 
+    left: 132px;
+    height: 370px;
+    width: 510px;
+}
+
+.frag-la {
+    top: 3325px; 
+    left: 333px;
+    height: 270px;
+    width: 465px;
+}
 
 
 
@@ -578,9 +633,9 @@ top: 50%; /* 세로 정중앙 */
 
 transform: translateY(-50%); /* 정확한 중앙 정렬 */
 
-font-family: 'Times New Roman', serif;
+font-family: 'Times New Roman', serif !important;
 
-font-size: 0.9rem;
+font-size: 14px;
 
 color: #000;
 
@@ -705,8 +760,7 @@ font-style: italic;
 }
 
 .node-text {
-    font-family: 'Times New Roman', serif;
-    font-size: 1.3rem;
+    font-size: 24PX;
     cursor: pointer;
 }
 
@@ -745,10 +799,12 @@ font-style: italic;
 
 .description {
     font-family: 'Times New Roman', serif;
-    font-size: 18px; 
-    line-height: 1.6;
-    text-align: justify;
+    font-size: 22px; 
+    line-height: 1.4;
+    text-align: left;
     margin: 0 20px;
+    margin-top: -50px;
+    
     
 }
 
@@ -760,3 +816,750 @@ font-style: italic;
     margin: 5px 0;
     display: block !important; /* 강제로 보이게 함 */
 }
+
+
+/* --- 특정 페이지 접속 시 리스트 하이라이트 유지 --- */
+
+/* body ID가 page-lambs일 때, 해당 data-target을 가진 nav-item을 검게 만듦 */
+#page-lambs [data-target="frag-lambs"] {
+    background-color: #000 !important;
+    color: #fff !important;
+    border-radius: 2px;
+}
+
+/* 링크 글자색도 흰색으로 고정 */
+#page-lambs [data-target="frag-lambs"] .movie-link {
+    color: #fff !important;
+}
+
+
+
+/* 기본적으로 문장들은 숨김 */
+.detail-content .description {
+    display: none;
+    font-family: 'Times New Roman', serif;
+    font-size: 22px; 
+    line-height: 1.4;
+    text-align: left; /* 시안처럼 중앙 정렬 */
+    margin-top: -80px;
+    max-width: 600px;
+}
+
+/* active 클래스가 붙은 문장만 보임 */
+.detail-content .description.active {
+    display: block;
+  
+    
+}
+
+
+/* [핵심] 왼쪽 화살표: 문장 시작점(좌측)으로 보내기 */
+.arrow-btn-prev {
+    position: absolute; /* [필수] 이게 있어야 right: 0이 먹혀! */
+    right: 92%;           /* 500px 박스의 맨 오른쪽 끝 */
+    top: 50%;           /* 부모 박스의 세로 중앙 */
+    transform: translateY(-50%); /* 정확하게 글자 높이랑 나란히 맞춤 */
+    font-size: 1.3rem;
+    line-height: 1;
+    display: none;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- [완벽 격리] 상세 페이지 전용 레이아웃 최종판 --- */
+
+
+
+/* 1. 본문 영역을 오른쪽 여백 없이 꽉 채우기 */
+
+.detail-page .content {
+
+margin-left: 40px !important; /* 사이드바 여백 유지 */
+
+padding: 60px 40px !important;
+
+width: calc(100% - 460px) !important; /* 이미지 영역 신경 쓰지 말고 꽉 채움 */
+
+max-width: none !important; /* 너비 제한 해제 */
+
+position: relative !important;
+
+display: block !important;
+
+}
+
+
+
+
+
+/* 2. 메인 페이지에서 쓰던 image-wrapper의 영향을 제거 */
+
+.detail-page .image-wrapper {
+
+width: 100% !important;
+
+position: static !important;
+
+}
+
+
+
+/* 3. 본문 안의 글자(텍스트)와 이미지들이 겹치지 않게 '한 줄에 하나씩' 배치 */
+
+.detail-page .content * {
+
+position: static !important; /* absolute 해제 */
+
+display: block !important; /* 무조건 줄바꿈 */
+
+width: auto !important;
+
+max-width: 800px; /* 읽기 편하게 최대 너비 제한 */
+
+margin-bottom: 30px !important;
+
+line-height: 1.6 !important;
+
+font-family: 'Times New Roman', serif;
+
+}
+
+
+
+/* 4. 포스터 이미지 크기 고정 (피그마 느낌) */
+
+.detail-page .poster-box img {
+
+width: 300px !important; /* 포스터는 500px 정도로 큼직하게 */
+
+height: auto !important;
+
+margin-top: 20px;
+
+}
+
+
+
+/* 5. 텍스트 정렬 */
+
+.detail-page .description {
+
+text-align: justify;
+
+font-size: 1.1rem;
+
+color: #333;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- 상세 페이지 콘텐츠 좌측 이동 및 레이아웃 최종 보정 --- */
+
+
+
+/* 1. 상세 페이지일 때 본문을 사이드바 바로 옆으로 당기기 */
+
+.detail-page .content {
+
+margin-left: 380px !important; /* 사이드바 너비만큼만 띄우기 */
+
+padding: 80px 0px !important; /* 위아래 여백 60px, 좌우 여백 40px */
+
+width: calc(100% - 380px) !important;
+
+max-width: 1000px !important; /* 본문이 너무 퍼지지 않게 적당히 제한 */
+
+display: block !important;
+
+}
+
+
+
+/* 2. 상단 헤더 (포스터 + 제목) 가로 정렬 및 왼쪽 밀착 */
+
+.detail-page .info-header {
+
+display: flex !important;
+
+gap: 40px; /* 포스터와 글자 사이 간격 좁힘 */
+
+align-items: flex-start;
+
+margin-bottom: 50px;
+
+}
+
+
+
+/* 3. 포스터 크기 최적화 */
+
+.detail-page .poster-box img {
+
+width: 315px !important; /* 피그마 느낌으로 크기 고정 */
+
+height: auto !important;
+
+margin: 0 !important;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+/* 5. 메인 페이지의 absolute 잔재들 완전 박멸 */
+
+.detail-page .content * {
+
+position: static !important;
+
+transform: none !important;
+
+margin-left: 0 !important; /* 혹시 모를 왼쪽 마진 초기화 */
+
+
+}
+
+
+
+
+
+
+
+
+
+
+/* --- 상세 페이지 텍스트 세부 커스텀 --- */
+
+
+
+/* 1. 영화 메인 제목 (The Silence of the Lambs) */
+
+.detail-page .movie-title {
+
+font-family: 'Times New Roman', Times, serif;
+
+font-size: 35px !important; /* 크기를 더 키우고 싶으면 조절해 */
+
+font-weight: normal;
+
+letter-spacing: -0.03em; /* 자간을 살짝 좁히면 더 세련돼 보여 */
+
+margin-top: -15px;
+
+color: #000;
+
+
+}
+
+
+
+/* 2. 영화 정보 (1991 | Jonathan Demme) */
+
+.detail-page .movie-meta {
+
+font-family: 'Times New Roman', serif;
+
+font-size: 18px !important;
+
+color: #666 !important; /* 약간 흐리게 해서 제목을 강조 */
+
+margin-top: -35px;
+
+}
+
+
+/* 3. 도입부 요약 텍스트 (수정본) */
+.detail-page .intro-text {
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-size: 18px !important;
+    line-height: 1.5 !important; 
+    
+    /* ★ 자간을 0이나 아주 살짝만 줄여줘 (-1.5px은 너무 과해!) ★ */
+    letter-spacing: -0.2px !important; 
+    
+    /* ★ 확실하게 왼쪽 정렬 고정 ★ */
+    text-align: left !important; 
+    
+    color: #333;
+    max-width: 550px; /* 너비를 살짝 줄이면 왼쪽 정렬된 끝선이 더 잘 보여 */
+    margin-top: 100px;
+}
+
+
+
+/* 4. 분석 영역: 본문 너비를 상단 선 끝 지점에 맞춤 */
+.detail-page .analysis-container {
+    display: flex !important;
+    justify-content: flex-start !important; /* 왼쪽 정렬 기준 */
+    align-items: flex-start;
+    width: 100% !important;
+    gap: 60px; /* 본문과 오른쪽 이미지 사이의 여유 공간 */
+}
+
+
+.detail-page .analysis-text {
+    /* ★ 핵심: 이 수치를 조절해서 상단 선의 끝부분과 맞추면 돼 ★ */
+    /* 현재 스크린샷 기준으로 선 끝에 맞추려면 800px~850px 정도가 적당해 보여 */
+    width: 820px !important; 
+    flex-shrink: 0 !important;
+}
+
+
+
+.detail-page .sub-content {
+
+/* 이미지를 화면 맨 우측 빈 공간으로 치워버림 */
+
+width: 250px !important;
+margin-left: 30px;
+flex-shrink: 0 !important;
+text-align: left !important;
+
+
+}
+
+
+/* 1. 모든 p 태그의 기본 간격을 일단 0으로 초기화 (정밀 조절을 위해) */
+.detail-page .analysis-text p {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    line-height: 1.4 !important; /* 줄 간격 */
+}
+
+/* 2. 첫 번째 p 태그 (∫ Two Cocoons...) */
+.detail-page .analysis-text p:nth-child(1) {
+    margin-top: -55px !important;    /* 위로 더 올리고 싶으면 마이너스 수치 조절 */
+    margin-bottom: 30px !important;  /* 이 문단 아래쪽 여백 (본문과의 간격) */
+    font-size: 24px !important; 
+    line-height: 38.4px;
+    
+}
+
+/* 3. 두 번째 p 태그 (The Silence of the Lambs is a journey...) */
+.detail-page .analysis-text p:nth-child(2) {
+    margin-bottom: 50px !important;  /* 본문 아래쪽 여백 (캐릭터 선택창과의 간격) */
+    margin-top: -10px !important;  
+    line-height: 1.6 !important;     /* 본문은 가독성을 위해 줄 간격을 조금 더 넓게 */
+}
+
+
+
+
+
+/* 5. 분석 본문 내용 (수정본) */
+.detail-page .analysis-text p {
+    font-family: 'Times New Roman', serif;
+    font-size: 24px !important;
+    
+    /* ★ px 대신 숫자를 써봐! 1.2는 매우 촘촘, 1.5는 적당한 간격이야 ★ */
+    line-height: 1.4 !important; 
+    
+    text-align: left !important;
+    letter-spacing: -0.01em !important;
+    color: #000000 !important;
+    margin-top: 20px !important;
+}
+
+
+
+
+
+
+
+
+
+/* 2. 본문 컨테이너 상단에 직접 라인 만들기 */
+.detail-page .analysis-container {
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: flex-start;
+    width: 100% !important;
+    gap: 60px;
+    
+    
+    /* 여기서 직접 라인을 그려! */
+    border-top: 1px solid #000000 !important; /* 선 두께, 스타일, 색상 마음대로 조절 가능 */
+    padding-top: 70px;     /* 선과 본문 사이의 간격 */
+    margin-top: -5px;     /* 선과 위쪽 요소 사이의 간격 */
+}
+
+
+/* 1. p 태그 안의 모든 요소가 줄바꿈 없이 이어지도록 설정 */
+.detail-page .analysis-text p * {
+    display: inline !important; /* block 요소를 inline으로 강제 변경 */
+    margin: 0 !important;       /* 주변 여백 제거 */
+    padding: 0 !important;      /* 내부 여백 제거 */
+}
+
+/* 2. 만약 em 태그를 썼다면 확실하게 한 번 더 잡아주기 */
+.detail-page .analysis-text p em {
+    display: inline !important;
+    font-style: italic;
+
+}
+
+
+
+ /* 1. 처음에는 상세 내용을 완전히 숨김 */
+.detail-content {
+    display: none; 
+    margin-top: 15px;
+    padding-left: 10px;
+}
+
+/* 2. active 클래스가 붙은 경우에만 보이게 함 */
+.keyword-node.active .detail-content {
+    display: block !important;
+}
+
+/* 3. 클릭할 수 있다는 느낌을 주기 위한 스타일 */
+.char-label {
+    cursor: pointer;
+    font-size: 24px;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}
+
+.char-label:hover {
+    opacity: 0.6;
+}
+
+/* [핵심] 상세 내용은 처음에는 무조건 숨김 처리 */
+.keyword-node .detail-content {
+    display: none !important; /* 처음엔 안 보이게 강제 고정 */
+    margin-top: 15px;
+    padding-left: 20px;
+
+}
+
+/* [수정] 상세 내용 분석 텍스트 스타일 통일 */
+.keyword-node.active .detail-content {
+    display: block !important;
+    margin-top: 90px;      /* 본문 문단 간격과 통일 */
+    margin-bottom: 50px;   /* 아래 버튼과의 간격 */
+    padding-left: 0px;
+}
+
+.keyword-node.active .detail-content .main-text-block p.description {
+    font-family: 'EB Garamond', serif !important;
+    font-size: 24px !important;
+    line-height: 1.5 !important;
+    color: #000 !important;
+}
+
+
+
+
+/* 2. 오른쪽 서브스크립트만 따로 조절 (이 코드를 추가하세요) */
+.keyword-node.active .detail-content .sub-description {
+    /* 본문 설정(24px)을 무시하고 작게 고정 */
+    font-size: 18px !important; 
+    line-height: 1.3 !important;
+    letter-spacing: 0 !important;
+    
+    /* 위치 및 너비 조절 */
+    margin-left: 840px !important;
+    width: 250px !important;
+    display: block !important;
+    
+    /* 본문보다 위로 올리고 싶을 때 수치 조절 */
+    transform: translateY(700px) !important; 
+}
+
+
+
+
+
+
+/* 클릭할 제목 스타일 */
+.char-label {
+    cursor: pointer;
+    font-size: 24px;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    display: inline-block;
+    margin-bottom: 33px 
+
+}
+
+
+
+
+
+.hover-img {
+
+display: inline-block;
+
+
+/* 1. 평소 상태: 크기를 아예 0으로 만들어서 공간 제거 */
+
+width: 200 !important;
+
+height: 0 !important;
+
+opacity: 0;
+
+pointer-events: none;
+
+
+vertical-align: middle;
+
+margin-top: -130px;
+
+}
+
+
+
+/* 2. 글자에 마우스 올렸을 때 (Hover) */
+
+.keyword-header:hover .hover-img {
+
+/* ★여기가 핵심! 오빠가 원하는 조그만 크기를 여기서 정해★ */
+
+width: 200px !important; /* 50px 정도로 조그맣게 (더 줄이려면 30px로!) */
+
+height: auto !important; /* 가로에 맞춰 세로 비율 자동 조절 */
+position: absolute;
+
+/* 투명도 조절: 0.3은 반투명, 1은 선명하게 */
+
+opacity: 1 !important;
+
+margin-top: -130px;
+
+margin-left: 10px; /* 글자랑 살짝 간격 띄우기 */
+
+
+}
+
+
+/* 1. 기존 <hr> 스타일 제거 및 검은 라인 추가 */
+.citation-footer hr {
+    display: none; /* 기본 라인 숨기기 */
+}
+
+/* [수정] 검은 라인 스타일 */
+.black-line {
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid #000000 !important;
+    
+    /* ★ 핵심: auto를 주면 남는 공간을 다 위로 밀어서 바닥으로 내려가 ★ */
+    margin-top: auto !important;  
+    padding-top: -10px !important; /* 선 위쪽 여유 공간 */
+    margin-bottom: 30px !important;
+}
+
+
+
+
+/* 3. 각주 텍스트 정렬 */
+.citation-footer ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.citation-footer li {
+    font-size: 18px;
+    line-height: 1.3;
+    color: #000000;
+    margin-bottom: 10px;
+    scroll-margin-top: 100px; /* 이동 시 위쪽 여백 */
+    padding-bottom: 0px !important; /* 웹사이트 맨 밑에 너무 붙지 않게 여유 */
+    
+}
+
+
+/* 2. 각주 전체 영역 (푸터) */
+.citation-footer {
+    width: 1300px;
+    max-width: 1100px; /* 본문 너비랑 맞추기 */
+    margin-left: 390px;
+}
+
+
+/* [최종 해결] 경로를 단순화해서 무조건 가로 820px 채우기 */
+body.detail-page .bill-image-box {
+    width: 820px !important;      /* 본문 너비와 동일하게 */
+    max-width: 820px !important;
+    height: 360px !important;      /* 세로 300px 고정하면 사진 찌그러지니까 auto로! */
+    margin: 40px 0 !important;    /* 위아래 적당한 간격 */
+    display: block !important;
+}
+
+/* 이미지 자체가 박스 너비를 꽉 채우도록 */
+body.detail-page .bill-image-box img {
+    width: 100% !important;
+    display: block !important;
+}
+  
+
+/* [수정] 사진 아래 캡션 */
+/* [가장 확실한 방법] 경로를 끝까지 다 적어서 캡션만 수정 */
+body.detail-page .content .analysis-body .analysis-container .main-text-block .bill-image-box p.bill-img-caption {
+    /* 1. 폰트 크기 및 종류 */
+    font-family: 'EB Garamond', serif !important;
+    font-size: 18px !important; /* ← 여기서 글자 크기 조절해! */
+    
+    /* 2. 글자 스타일 */
+    line-height: 1.4 !important;
+    letter-spacing: 0px !important;
+    
+    /* 3. 위치 및 정렬 */
+    text-align: left !important; /* 왼쪽 정렬 */
+    margin-top: -20px !important; /* 이미지와의 간격 */
+    padding: 0 !important;
+    display: block !important;
+}
+
+
+
+
+/* 페이지 전체에 부드러운 스크롤 적용 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 본문의 각주 링크 디자인 */
+.footnote-link {
+    font-size: 0.7em;       /* 글자를 살짝 작게 */
+    vertical-align: super; /* 위첨자처럼 보이게 */
+    color: #000;           /* 색상은 검정 */
+    text-decoration: none; /* 밑줄 제거 */
+    margin-left: 2px;
+    transition: color 0.2s;
+}
+
+
+
+
+
+/* --- 클라리스 전용 서브 설명 위치 조절 --- */
+
+#clarice-sub-desc {
+     /* 본문 설정(24px)을 무시하고 작게 고정 */
+     position: absolute !important;
+    font-size: 18px !important; 
+    line-height: 1.3 !important;
+    letter-spacing: 0 !important;
+    
+    /* 위치 및 너비 조절 */
+    margin-left: 840px !important;
+    width: 250px !important;
+    display: block !important;
+    
+    /* 본문보다 위로 올리고 싶을 때 수치 조절 */
+    transform: translateY(-290px) !important; 
+}
+
+
+/* --- 클라리스 두 번째 문단 전용 조절 --- */
+
+
+
+/* --- 클라리스 두 번째 문단(Mid) 전용 조절 --- */
+
+/* 1. 문단 사이의 간격 (높이) 조절 */
+#node-clarice .clarice-mid {
+
+    margin-bottom: 40px !important; /* 세 번째 문단과의 간격 */
+    
+    /* 2. 문단 자체의 줄 간격 */
+    line-height: 1.6 !important; 
+    
+    /* 3. 문단 글자 크기 (혹시 다르게 하고 싶다면) */
+    font-size: 24px !important;
+    
+    /* 4. 왼쪽 여백 (필요할 때만 사용) */
+    padding-left: 0px !important;
+}
+
+/* 래퍼(감싸는 박스)의 상단 여백도 체크 */
+#content-clarice .description-wrapper {
+    margin-top: 20px !important; /* 제목(In the case of Clarice)과의 거리 */
+
+}
+
+
+
+#node-clarice .clarice-last {
+    margin-top: 0px !important;    /* 첫 번째 문단과의 간격 (늘리거나 줄여봐!) */
+    margin-bottom: 40px !important; /* 세 번째 문단과의 간격 */
+}
+
+#node-bill .bill-min {
+ margin-top: 170px !important;    /* 첫 번째 문단과의 간격 (늘리거나 줄여봐!) */
+    margin-bottom: 40px !important; /* 세 번째 문단과의 간격 */
+    position: relative !important;
+}
+
+
+/* --- 서브 설명 박스 내부 이미지 전용 스타일 --- */
+
+/* 1. 이미지 크기 및 간격 조절 */
+#clarice-sub-desc img.sub-img {
+    /* [핵심] 800px까지 커지는 공통 스타일을 이겨내고 250px로 고정 */
+    width: 400px !important;   /* 박스 너비(250px)에 꽉 채우기 */
+    height: auto !important;  /* 가로에 맞춰 세로 비율 자동 조절 */
+    
+ 
+}
+
+
+
+body.detail-page .content .analysis-body .analysis-container  p.clarice-img-caption {
+    /* 1. 폰트 크기 및 종류 */
+    font-family: 'EB Garamond', serif !important;
+    font-size: 18px !important; /* ← 여기서 글자 크기 조절해! */
+    
+    /* 2. 글자 스타일 */
+    line-height: 1.2 !important;
+    letter-spacing: 0px !important;
+    
+    /* 3. 위치 및 정렬 */
+    text-align: left !important; /* 왼쪽 정렬 */
+    margin-top: -20px !important; /* 이미지와의 간격 */
+    padding: 0 !important;
+    display: block !important;
+}
+
+
+/* 1. 클라리스 전체 문단을 감싸는 박스 설정 초기화 */
+#content-clarice .description-wrapper {
+    display: block !important;    /* flex를 해제해서 문단이 차곡차곡 쌓이게 함 */
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
