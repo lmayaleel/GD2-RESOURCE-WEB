@@ -2177,7 +2177,7 @@ body.detail-page .bill-image-box {
 /* 1. 스왈로우 페이지의 사이드 이미지 박스만 타겟팅 */
 #page-swallow .sub-description {
     /* 양들의 침묵 페이지는 그대로 두고, 이 페이지만 위치를 아래로 내림 */
-    top: 190vh !important;  /* 50vh가 중간이니까, 70~80 사이로 조절해보세요 */
+    top: 233vh !important;  /* 50vh가 중간이니까, 70~80 사이로 조절해보세요 */
     right: -200px; /* 평소엔 숨김 */
     transition: all 0.6s ease;
 }
@@ -2185,7 +2185,7 @@ body.detail-page .bill-image-box {
 #page-swallow .sub-description.visible {
     right: -100px !important;
     opacity: 1 !important;
-    top: 190vh !important;  /* 50vh가 중간이니까, 70~80 사이로 조절해보세요 */
+    top: 233vh !important;  /* 50vh가 중간이니까, 70~80 사이로 조절해보세요 */
     
 
 }
