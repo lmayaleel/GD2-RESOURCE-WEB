@@ -1743,7 +1743,7 @@ html {
 /* 2. 클라리스 서브 설명 박스 (이미지 포함) 고정 */
 #page-lambs #clarice-sub-desc {
     position: absolute !important;
-    right: -280px;      /* 본문 너비(820px) 바깥 오른쪽으로 배치 */
+    right: -400px;      /* 본문 너비(820px) 바깥 오른쪽으로 배치 */
     top: 0 !important;  /* 클라리스 섹션이 시작되는 맨 윗부분에 고정! */
     
     width: 250px !important; 
@@ -1759,9 +1759,13 @@ html {
      margin-top: 10px !important; /* 이미지와의 간격 */
 
     
- 
 }
-
+/* 2. 글자 클릭 시 .visible 클래스가 붙으면 나타날 위치 */
+#page-lambs #clarice-sub-desc.visible {
+    right: -280px;         /* 원래 오빠가 원했던 위치로 들어옴 */
+    opacity: 1;            /* 선명하게 보임 */
+    pointer-events: auto;  /* 나타나면 상호작용 가능 */
+}
 
 body.detail-page .content .analysis-body .analysis-container  p.clarice-img-caption {
     /* 1. 폰트 크기 및 종류 */
@@ -2218,7 +2222,7 @@ body.detail-page .bill-image-box {
 
 /* 1. Metempsychosis 페이지 전용 사이드 박스 설정 */
 #page-metempsychosis .sub-description {
-    top: 99vh !important; /* 위치를 약간 위쪽으로 잡았어요, 조절 가능! */
+    top: 123vh !important; /* 위치를 약간 위쪽으로 잡았어요, 조절 가능! */
     right: -300px;
     width: 250px !important; /* 이미지 3개니까 폭을 조금 넓게 */
    
@@ -2228,7 +2232,7 @@ body.detail-page .bill-image-box {
 /* 클릭 시 나타나는 위치 */
 #page-metempsychosis .sub-description.visible {
     right: -140px !important;
-        top: 99vh !important; 
+        top: 123vh !important; 
  
 }
 
@@ -2244,7 +2248,7 @@ body.detail-page .bill-image-box {
 
 /* 1. Metempsychosis 페이지 전용 사이드 박스 설정 */
 #page-paprika .sub-description {
-    top: 97vh !important; /* 위치를 약간 위쪽으로 잡았어요, 조절 가능! */
+    top: 120vh !important; /* 위치를 약간 위쪽으로 잡았어요, 조절 가능! */
     right: -300px;
     width: 270px !important; /* 이미지 3개니까 폭을 조금 넓게 */
     object-fit: fill !important;
@@ -2257,7 +2261,7 @@ body.detail-page .bill-image-box {
 /* 클릭 시 나타나는 위치 */
 #page-paprika .sub-description.visible {
     right: -140px !important;
-        top: 97vh !important; 
+        top: 120vh !important; 
     
 }
 
