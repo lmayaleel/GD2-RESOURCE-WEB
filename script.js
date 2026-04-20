@@ -35,21 +35,39 @@ fragments.forEach(img => {
     });
 });
 
-function scrollToImage(className) {
-    const targetImage = document.querySelector(className);
+function scrollToImage(selector, descId) {
+    const targetImage = document.querySelector(selector);
     
+    // [1] 부드러운 스크롤 기능 (한 번에 고정된 위치로 이동)
     if (targetImage) {
-        // 이미지가 위치한 절대 좌표(Y축)를 계산해
+        // 이미지가 전체 문서에서 위로부터 몇 픽셀 위치에 있는지 계산
         const targetPosition = targetImage.getBoundingClientRect().top + window.pageYOffset;
         
-        // 화면 중앙에 오게 하고 싶으면 약간의 보정값을 뺄 수 있어 (예: -200)
+        // 보정값 (100이면 화면 상단에서 100px 정도 여유를 두고 멈춤)
+        // 화면이 너무 위를 보여준다 싶으면 이 숫자를 150, 200으로 키워봐!
+        const offset = 80; 
+
         window.scrollTo({
-            top: targetPosition - 100, 
+            top: targetPosition - offset, 
             behavior: 'smooth'
         });
-    } else {
-        console.log("이미지를 찾을 수 없어:", className);
     }
+
+    // [2] 카테고리 설명창 토글 기능
+    // 일단 모든 설명창(.category-description)을 닫음
+    const allDescs = document.querySelectorAll('.category-description');
+    allDescs.forEach(desc => {
+        desc.classList.remove('active');
+    });
+
+    // 클릭한 심볼에 해당하는 ID의 박스만 켜기
+    const targetDesc = document.getElementById(descId);
+    if (targetDesc) {
+        targetDesc.classList.add('active');
+    }
+    
+
+    
 }
 
 
@@ -220,13 +238,45 @@ function updateArrowState(node, currentIndex, totalCount) {
     nextBtn.style.display = (currentIndex < totalCount - 1) ? 'block' : 'none';
 }
 
-// toggleDetail도 수정 (열릴 때 초기 상태 세팅)
-function toggleDetail(nodeNum) {
-    const node = document.getElementById(`node-${nodeNum}`);
-    node.classList.toggle('active');
+// 화면 어디든 클릭했을 때 실행되는 이벤트
+document.addEventListener('click', function(e) {
+    // 1. 클릭한 요소(e.target)가 '카테고리 심볼'인지 확인
+    const isSymbol = e.target.classList.contains('group-symbol');
     
-    if(node.classList.contains('active')) {
-        const descriptions = node.querySelectorAll('.description');
-        updateArrowState(node, 0, descriptions.length);
+    // 2. 클릭한 요소가 '설명 박스' 안쪽인지 확인
+    const isInsideDesc = e.target.closest('.category-description');
+
+    // 3. 심볼을 누른 것도 아니고, 설명창 안을 누른 것도 아니라면? (즉, 빈 곳 클릭)
+    if (!isSymbol && !isInsideDesc) {
+        // 모든 설명창에서 active 클래스를 제거해서 숨김 처리
+        const allDescs = document.querySelectorAll('.category-description');
+        allDescs.forEach(desc => {
+            desc.classList.remove('active');
+        });
     }
-}
+
+window.addEventListener('load', function() {
+    document.querySelectorAll('.img-word').forEach(word => {
+        const imgPath = word.getAttribute('data-img');
+        if (imgPath) {
+            word.style.setProperty('--img-url', `url('${imgPath}')`);
+        }
+    });
+});
+    
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const trigger = document.querySelector('.trigger-text'); // 클릭할 문장
+    const sideImage = document.querySelector('#clarice-sub-desc'); // 튀어나올 이미지 박스
+
+    if (trigger && sideImage) {
+        trigger.addEventListener('click', function() {
+            // 클릭할 때마다 visible 클래스를 넣었다 뺐다(토글) 합니다.
+            sideImage.classList.toggle('visible');
+            
+            // 만약 한 번 나타나면 계속 유지하고 싶다면 아래 코드를 쓰세요.
+            // sideImage.classList.add('visible');
+        });
+    }
+});

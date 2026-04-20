@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Butterfly Archive</title>
+    <link rel="icon" href="source/films/W.jpg" type="image/png">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,6 +13,7 @@
 </head>
 
 <body>
+    <body id="main-page">
     <div class="container">
         <aside class="sidebar">
             <div class="header-area">
@@ -38,8 +40,9 @@
                         <span class="num">Ⅳ.</span>
                         <a href="duke.html" class="movie-link"> The Duke of Burgundy</a>
                         </li>
-                        
-                        <span class="group-symbol" onclick="scrollToImage('.frag-collector')">ᶈ</span></div>
+                        <span class="group-symbol" onclick="scrollToImage('.frag-collector', 'desc-p')">ᶈ</span></div>
+
+
 
         <div class="movie-group" id="group-2">
             <li class="nav-item" data-target="frag-5">
@@ -52,7 +55,7 @@
             </li>
             <li class="nav-item" data-target="frag-daises">
             <span class="num">Ⅶ.</span> 
-             <a href="daises.html" class="movie-link">Daises</a>
+             <a href="daises.html" class="movie-link">Daisies</a>
              </li>
             <li class="nav-item" data-target="frag-lambs">
     <span class="num">Ⅷ.</span> 
@@ -70,7 +73,7 @@
             <span class="num">Ⅺ.</span> 
             <a href="women.html" class="movie-link">You Never Know Women</a>
             </li>
-            <span class="group-symbol" onclick="scrollToImage('.frag-house')">ᶆ</span>
+            <span class="group-symbol" onclick="scrollToImage('.frag-house', 'desc-m')">ᶆ</span>
         </div>
 
         <div class="movie-group" id="group-3">
@@ -90,10 +93,28 @@
                 <span class="num">XV.</span>
                 <a href="in.html" class="movie-link">In the Realms of the Unreal</a>
                 </li>
-            <span class="group-symbol" onclick="scrollToImage('.frag-leprintemps')">ᶋ</span>
+            <span class="group-symbol" onclick="scrollToImage('.frag-leprintemps', 'desc-l')">ᶋ</span>
         </div>
     </ul>
 </nav>
+
+
+
+<div id="desc-p" class="category-description">
+    <h3>Possessiveness</h3>
+    <p>In these films, butterflies symbolize the fragile boundary<br> between admiration and possession.<a href="about.html" class="desc-arrow">↦</a> </p>
+</div>
+
+<div id="desc-m" class="category-description">
+    <h3>Metamorphosis</h3>
+    <p>In these films, butterflies symbolize the grotesque <br> of an incomplete transformation. <a href="about.html" class="desc-arrow">↦</a></p>
+</div>
+
+<div id="desc-l" class="category-description">
+    <h3>Liberation</h3>
+    <p>In these films, butterflies symbolize a final liberation<br> attained the transcendence of the self.<a href="about.html" class="desc-arrow">↦</a></p>
+</div>
+
         </aside>
 
         <main class="content">
@@ -151,6 +172,13 @@
                 
 
             </div>
+    <div class="end-credits">
+    <div class="fin-mark">
+        <span class="bracket">[</span>
+        <span class="text">FIN</span>
+        <span class="bracket">]</span>
+    </div>
+</div>
         </main>
     </div>
     <script src="script.js"></script>
